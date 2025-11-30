@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mercado Emprendedor GT | Plataforma de Emprendimientos Guatemaltecos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Mercado Emprendedor GT conecta a emprendedores guatemaltecos con clientes digitales mediante una plataforma moderna, estrategias de marketing y herramientas de crecimiento." />
+
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-section: #020617;
+      --bg-card: #020617;
+      --bg-soft: #020617;
+      --accent: #f97316;
+      --accent-soft: rgba(249, 115, 22, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2937;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout base */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    /* Header & nav */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fed7aa, #f97316 45%, #7c2d12 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #020617;
+      border: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+
+    @media (min-width: 900px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      color: var(--text-muted);
+      transition: all 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.85rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      background: none;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #f97316, #fb923c);
+      color: #0b1120;
+      font-weight: 600;
+      border-color: rgba(248, 250, 252, 0.08);
+      box-shadow: 0 12px 30px rgba(248, 113, 22, 0.35);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(248, 113, 22, 0.45);
+    }
+
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 4.5rem 0 3rem 0;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding-top: 5.5rem;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 2.6rem;
+      }
+    }
+
+    .hero-highlight {
+      background: linear-gradient(to right, #fed7aa, #fb923c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span strong {
+      color: var(--text-main);
+    }
+
+    .hero-mockup {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: radial-gradient(circle at top, rgba(248, 250, 252, 0.05), rgba(15, 23, 42, 0.95));
+      padding: 1.4rem;
+      box-shadow: 0 22px 70px rgba(15, 23, 42, 0.9);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mockup-screen {
+      border-radius: 1.1rem;
+      background: linear-gradient(145deg, #020617, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mockup-screen::before {
+      content: "Mockup · Inicio (Desktop)";
+      position: absolute;
+      top: 0.45rem;
+      right: 0.8rem;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.7);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .mockup-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .mockup-bubbles {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+
+    .mockup-bubbles span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    .mockup-bubbles span:nth-child(2) {
+      background: #facc15;
+    }
+
+    .mockup-bubbles span:nth-child(3) {
+      background: #22c55e;
+    }
+
+    .mockup-body {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .mockup-hero-block {
+      padding-right: 0.4rem;
+    }
+
+    .mockup-hero-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .mockup-hero-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .mockup-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .mockup-chip {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .mockup-right {
+      border-radius: 0.75rem;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.35), transparent),
+                  radial-gradient(circle at bottom, rgba(248, 113, 22, 0.35), transparent),
+                  #020617;
+      padding: 0.7rem;
+      font-size: 0.65rem;
+      display: grid;
+      gap: 0.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .mockup-list-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    .mockup-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .mockup-mobile-strip {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .mockup-mobile {
+      width: 70px;
+      height: 120px;
+      border-radius: 1.3rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: linear-gradient(160deg, #020617, #020617);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mockup-mobile::after {
+      content: "Mockup · Inicio (Mobile)";
+      position: absolute;
+      bottom: 0.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.55rem;
+      padding: 0.15rem 0.35rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .mockup-mobile-inner {
+      position: absolute;
+      inset: 0.3rem;
+      border-radius: 1rem;
+      border: 1px dashed rgba(148, 163, 184, 0.35);
+    }
+
+    /* Cards */
+
+    .card {
+      border-radius: 1.1rem;
+      padding: 1.25rem;
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.08), transparent),
+                  rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .card-soft {
+      border-radius: 1.1rem;
+      padding: 1.2rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.35);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .muted {
+      color: var(--text-muted);
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--text-muted);
+    }
+
+    .pill-accent {
+      border-color: rgba(249, 115, 22, 0.8);
+      color: var(--accent);
+      background: rgba(249, 115, 22, 0.08);
+    }
+
+    /* Product gallery */
+
+    .product-gallery {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .product-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .product-card {
+      border-radius: 1.1rem;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .product-image {
+      background: #020617;
+      aspect-ratio: 4 / 3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.2);
+    }
+
+    .product-caption {
+      padding: 0.85rem 0.9rem 1rem 0.9rem;
+      font-size: 0.88rem;
+    }
+
+    .product-caption h4 {
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    .product-price {
+      margin-top: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    /* Process */
+
+    .step-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .step-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .step {
+      border-radius: 1rem;
+      padding: 1rem;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.9rem;
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Tables inline */
+
+    .table-like {
+      width: 100%;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      overflow: hidden;
+      font-size: 0.82rem;
+    }
+
+    .table-like-header {
+      background: rgba(15, 23, 42, 0.98);
+      font-weight: 600;
+      display: grid;
+      grid-template-columns: 1.2fr 2fr;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .table-like-row {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr;
+      padding: 0.4rem 0.75rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .table-like-row:last-child {
+      border-bottom: none;
+    }
+
+    /* Forms */
+
+    form {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.1rem;
+      display: block;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 0.55rem 0.7rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.45);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* Social row */
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.6rem;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .social-pill span.icon {
+      font-size: 1rem;
+    }
+
+    /* Mockup notes */
+
+    .mockup-note {
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 0.45rem 0.7rem;
+      border-radius: 0.7rem;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .mockup-note strong {
+      color: var(--accent);
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 1.5rem 0 2rem 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    /* Responsive tweaks */
+
+    @media (max-width: 768px) {
+      section {
+        padding: 3rem 0;
+      }
+
+      .hero-grid {
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark">GT</div>
+        <div>
+          <div class="logo-text-main">Mercado Emprendedor GT</div>
+          <div class="logo-text-sub">Plataforma digital de emprendedores guatemaltecos</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#producto-servicio">Producto</a>
+        <a href="#segmentacion">Segmentación</a>
+        <a href="#objetivos">Objetivos</a>
+        <a href="#estrategias">Estrategias</a>
+        <a href="#email-marketing">Email marketing</a>
+        <a href="#google-ads">Google Ads</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button class="btn btn-outline" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+          Soy emprendedor
+        </button>
+        <button class="btn btn-primary" onclick="document.getElementById('proceso-compra').scrollIntoView({behavior:'smooth'})">
+          Quiero comprar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / INICIO -->
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-kicker">Proyecto Final · Implementación de Estrategias de Emprendimiento</div>
+          <h1 class="hero-title">
+            <span class="hero-highlight">Mercado Emprendedor GT</span>: vitrina digital para
+            emprendedores guatemaltecos.
+          </h1>
+          <p class="hero-text">
+            Plataforma web diseñada para conectar <strong>emprendedores locales</strong> con clientes
+            digitales, integrando <strong>proceso de compra claro</strong>, segmentación precisa,
+            <strong>estrategias de redes sociales, email marketing y Google Ads</strong>.
+            Todo alineado a los requisitos académicos del proyecto final.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">Diseño responsive</span>
+            <span class="badge">Orientado a resultados</span>
+            <span class="badge">Listo para presentación académica</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <button class="btn btn-primary" onclick="document.getElementById('proceso-compra').scrollIntoView({behavior:'smooth'})">
+              Ver proceso de compra
+            </button>
+            <button class="btn btn-outline" onclick="document.getElementById('producto-servicio').scrollIntoView({behavior:'smooth'})">
+              Conocer el producto / servicio
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <span><strong>✔</strong> Incluye segmentación, objetivos, estrategias y mockups simulados.</span>
+            <span><strong>✔</strong> Estructura lista para capturas de pantalla y entrega en PDF.</span>
+          </div>
+        </div>
+
+        <!-- Mockup hero -->
+        <div class="hero-mockup">
+          <div class="mockup-screen">
+            <div class="mockup-topbar">
+              <div class="mockup-bubbles">
+                <span></span><span></span><span></span>
+              </div>
+              <span>mercadoemprendedor-gt.com</span>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-hero-block">
+                <div class="mockup-hero-title">Mercado Emprendedor GT</div>
+                <div class="mockup-hero-text">
+                  Vista general de la sección de inicio tal como la verá el docente: título, subtítulo y CTAs.
+                </div>
+                <div class="mockup-hero-ctas">
+                  <span class="mockup-chip">CTA · Quiero comprar</span>
+                  <span class="mockup-chip">CTA · Soy emprendedor</span>
+                  <span class="mockup-chip">Links a secciones</span>
+                </div>
+              </div>
+              <div class="mockup-right">
+                <div class="mockup-list-row">
+                  <span>Proceso de compra</span>
+                  <span>3 pasos claros</span>
+                </div>
+                <div class="mockup-list-row">
+                  <span>Segmentación</span>
+                  <span>Demográfica + psicográfica</span>
+                </div>
+                <div class="mockup-list-row">
+                  <span>Medios</span>
+                  <span>FB · IG · TikTok · Email · Google Ads</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mockup-mobile-strip">
+            <div class="mockup-mobile">
+              <div class="mockup-mobile-inner"></div>
+            </div>
+            <div>
+              <div class="mockup-tag">
+                <strong>Mockup móvil:</strong> Esta tarjeta simula la visualización en celular. Ideal para
+                captura de pantalla y evidenciar diseño responsive.
+              </div>
+            </div>
+          </div>
+
+          <div class="mockup-note">
+            <strong>Nota para el docente / evidencia:</strong> Esta sección puede usarse como
+            <em>captura simulada</em> del home en desktop y mobile. Solo debes hacer screenshot y
+            pegarla en tu documento de entrega.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTO / SERVICIO -->
+    <section id="producto-servicio">
+      <div class="container">
+        <div class="section-tag">Sección del producto / servicio</div>
+        <h2 class="section-title">¿Qué es Mercado Emprendedor GT?</h2>
+        <p class="section-subtitle">
+          <strong>Mercado Emprendedor GT</strong> es una plataforma web que centraliza productos y
+          servicios de emprendedores guatemaltecos en un solo lugar. Combina catálogo digital,
+          acompañamiento básico en marketing y un flujo de compra claro para el cliente final.
+        </p>
+
+        <div class="grid grid-2" style="margin-bottom: 2rem;">
+          <div class="card">
+            <div class="card-badge">Descripción del servicio</div>
+            <h3 class="card-title">Plataforma marketplace + soporte básico</h3>
+            <p class="muted">
+              La plataforma permite que emprendedores publiquen sus productos (artesanías, alimentos
+              empacados, servicios creativos, etc.) con fotografías profesionales, descripción clara y
+              precio visible. El cliente final puede explorar categorías, elegir productos y completar
+              su pedido por WhatsApp, formulario o pasarela de pago (según el nivel del emprendedor).
+            </p>
+            <ul>
+              <li>Catálogo digital de productos y servicios.</li>
+              <li>Sección de historia del emprendedor y propósito social.</li>
+              <li>Acompañamiento ligero en marketing digital (plantillas y guías).</li>
+              <li>Herramientas para captar datos de clientes (email y WhatsApp).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-badge">Beneficios y diferenciadores</div>
+            <h3 class="card-title">Valor para emprendedores y clientes</h3>
+            <ul class="muted">
+              <li><strong>Para emprendedores:</strong> presencia digital profesional sin necesidad de
+                saber programar, visibilidad centralizada y apoyo en estrategias.</li>
+              <li><strong>Para clientes:</strong> catálogo confiable de emprendimientos locales, compra
+                segura y opción de apoyar economía guatemalteca.</li>
+              <li><strong>Diferenciador:</strong> enfoque exclusivo en emprendedores guatemaltecos,
+                curaduría de calidad y acompañamiento en marketing.</li>
+            </ul>
+            <p class="product-price">
+              Rango de precios para emprendedores: desde Q150 al mes por espacio destacado en el
+              marketplace, hasta planes anuales con descuentos.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Fotografías del producto con descripción</h3>
+        <div class="product-gallery">
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://via.placeholder.com/600x400?text=Perfil+de+emprendedor" alt="Panel de perfil de emprendedor dentro de Mercado Emprendedor GT" />
+            </div>
+            <div class="product-caption">
+              <h4>Panel de Emprendedor</h4>
+              <p class="muted">
+                Vista del espacio donde cada emprendedor administra sus productos, precios y fotografías.
+                Aquí se ve el nombre del emprendimiento, foto de portada y botones para editar su catálogo.
+              </p>
+              <div class="product-price">Mockup para captura: módulo de administración.</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://via.placeholder.com/600x400?text=Catalogo+de+productos" alt="Catálogo de productos de emprendedores guatemaltecos" />
+            </div>
+            <div class="product-caption">
+              <h4>Catálogo de Productos</h4>
+              <p class="muted">
+                Simulación del grid de productos: fotografía, nombre, precio y botón de “Ver detalle”. Ideal
+                para mostrar cómo se verían los productos artesanales, alimentos o servicios en la plataforma.
+              </p>
+              <div class="product-price">Rango de precios sugerido: Q35 – Q350 por producto.</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://via.placeholder.com/600x400?text=Pagina+de+detalle" alt="Página de detalle de producto" />
+            </div>
+            <div class="product-caption">
+              <h4>Detalle del Producto</h4>
+              <p class="muted">
+                Ejemplo de página de detalle: descripción ampliada, beneficios, materiales, opciones de envío
+                y botón de “Comprar vía WhatsApp” o “Añadir al carrito”.
+              </p>
+              <div class="product-price">Mockup para captura: detalle + CTA de compra.</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mockup-note">
+          <strong>Capturas simuladas:</strong> las imágenes de arriba utilizan placeholders que puedes
+          mantener o reemplazar con screenshots reales de tu navegador al presentar la página. Solo
+          abre este archivo en el navegador, toma captura de cada sección y pégalas en tu documento Word/PDF.
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO DE COMPRA -->
+    <section id="proceso-compra">
+      <div class="container">
+        <div class="section-tag">Proceso de compra paso a paso</div>
+        <h2 class="section-title">Cómo compra el cliente en Mercado Emprendedor GT</h2>
+        <p class="section-subtitle">
+          El proceso está diseñado para ser <strong>simple, guiado y transparente</strong>, tanto para el
+          cliente final como para el emprendedor.
+        </p>
+
+        <h3 style="margin-bottom: 0.8rem;">A) Proceso para el cliente final</h3>
+        <div class="step-list" style="margin-bottom: 1.6rem;">
+          <div class="step">
+            <div class="step-number">1</div>
+            <strong>Exploración de catálogo</strong>
+            <p class="muted">
+              El usuario entra a Mercado Emprendedor GT, filtra por categoría (alimentos, artesanías,
+              servicios digitales, etc.) y selecciona el producto de su interés.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <strong>Selección y consulta</strong>
+            <p class="muted">
+              Desde la página de detalle, el cliente revisa fotos, beneficios, precio y condiciones
+              de envío. Luego hace clic en “Comprar ahora” (WhatsApp/checkout) o “Agregar a favoritos”.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <strong>Confirmación y pago</strong>
+            <p class="muted">
+              La compra se confirma vía chat o pasarela de pago. El cliente recibe un correo o mensaje
+              de agradecimiento, junto con la información de entrega estimada.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom: 0.8rem;">B) Proceso para el emprendedor</h3>
+        <div class="grid grid-3">
+          <div class="step">
+            <div class="step-number">1</div>
+            <strong>Registro en la plataforma</strong>
+            <p class="muted">
+              El emprendedor completa el formulario de registro, describe su emprendimiento y selecciona
+              el plan (gratuito o destacado).
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <strong>Publicación de productos</strong>
+            <p class="muted">
+              Sube fotografías, agrega descripciones, beneficios y precios. Mercado Emprendedor GT valida
+              calidad básica del contenido.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <strong>Recepción de pedidos</strong>
+            <p class="muted">
+              Recibe pedidos desde la web y decide si usa envíos propios, mensajería local o convenios
+              con empresas de transporte.
+            </p>
+          </div>
+        </div>
+
+        <div class="mockup-note">
+          <strong>Nota proceso:</strong> Esta sección cumple con la exigencia del
+          <em>proceso de compra paso a paso</em> y es perfecta para ser capturada en una imagen aparte.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEGMENTACIÓN -->
+    <section id="segmentacion">
+      <div class="container">
+        <div class="section-tag">Segmentación de mercado</div>
+        <h2 class="section-title">Segmentación del público objetivo</h2>
+        <p class="section-subtitle">
+          La plataforma se enfoca en dos públicos clave:
+          <strong>emprendedores guatemaltecos</strong> que venden y
+          <strong>consumidores digitales</strong> que compran. A continuación se presenta la segmentación
+          recomendada para el proyecto.
+        </p>
+
+        <div class="grid grid-4">
+          <div class="card-soft">
+            <div class="card-badge">Datos demográficos</div>
+            <h3 class="card-title">¿Quiénes son?</h3>
+            <ul class="muted">
+              <li>Edad: 20–40 años.</li>
+              <li>Ubicación: principalmente Guatemala ciudad y cabeceras departamentales.</li>
+              <li>Nivel socioeconómico: C+, B, algunos C.</li>
+              <li>Educación: diversificado completo o estudios universitarios.</li>
+              <li>Emprendedores en fase inicial o de crecimiento.</li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <div class="card-badge">Datos psicográficos</div>
+            <h3 class="card-title">Estilo de vida & mindset</h3>
+            <ul class="muted">
+              <li>Valoran la independencia económica y el crecimiento personal.</li>
+              <li>Interés en innovación, redes sociales y herramientas digitales.</li>
+              <li>Buscan apoyar lo “local” y el consumo responsable.</li>
+              <li>Dispuestos a aprender sobre marketing y ventas online.</li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <div class="card-badge">Hábitos de compra</div>
+            <h3 class="card-title">Cómo compran y venden</h3>
+            <ul class="muted">
+              <li>Compran y venden a través de Facebook, Instagram y WhatsApp.</li>
+              <li>Prefieren pagos vía transferencia bancaria o billeteras electrónicas.</li>
+              <li>Comparan reseñas y comentarios antes de decidir.</li>
+              <li>Compran principalmente en horarios nocturnos (después de trabajar/estudiar).</li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <div class="card-badge">Necesidades del cliente ideal</div>
+            <h3 class="card-title">Lo que realmente buscan</h3>
+            <ul class="muted">
+              <li>Visibilidad digital profesional sin altos costos.</li>
+              <li>Un canal estable para conseguir más clientes.</li>
+              <li>Acompañamiento y guía básica en marketing digital.</li>
+              <li>Plataforma que genere confianza a compradores.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mockup-note">
+          <strong>Segmentación visual:</strong> Esta cuadrícula de cuatro tarjetas está pensada para
+          que la segmentación se vea clara y profesional. Ideal para captura como evidencia de
+          <em>datos demográficos, psicográficos, hábitos y necesidades</em>.
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section id="objetivos">
+      <div class="container">
+        <div class="section-tag">Objetivos del proyecto</div>
+        <h2 class="section-title">Objetivo general y objetivos específicos</h2>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-badge">Objetivo general</div>
+            <h3 class="card-title">Posicionar Mercado Emprendedor GT</h3>
+            <p class="muted">
+              Diseñar e implementar una estrategia digital integral que posicione a
+              <strong>Mercado Emprendedor GT</strong> como una plataforma de referencia para
+              emprendedores guatemaltecos, incrementando su visibilidad y facilitando el proceso de
+              compra–venta en línea mediante el uso de redes sociales, email marketing y campañas en
+              Google Ads durante los primeros 12 meses de implementación.
+            </p>
+          </div>
+
+          <div class="grid">
+            <div class="card-soft">
+              <div class="card-badge">Objetivo específico 1</div>
+              <p class="muted">
+                Alcanzar al menos <strong>50 emprendedores registrados</strong> en la plataforma
+                durante los primeros 6 meses, mediante campañas orgánicas y pagadas en redes sociales.
+              </p>
+            </div>
+            <div class="card-soft">
+              <div class="card-badge">Objetivo específico 2</div>
+              <p class="muted">
+                Lograr un mínimo de <strong>3,000 visitas únicas</strong> al sitio web en los primeros
+                3 meses, con una tasa de conversión del 3–5% hacia consultas o pedidos.
+              </p>
+            </div>
+            <div class="card-soft">
+              <div class="card-badge">Objetivo específico 3</div>
+              <p class="muted">
+                Construir una base de datos de al menos <strong>800 correos electrónicos</strong> de
+                clientes y prospectos, a través de formularios de registro y campañas de email
+                marketing, durante el primer año.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-note">
+          <strong>Tip:</strong> Puedes copiar estos objetivos tal cual en tu documento escrito y
+          mantener esta sección en la web para que el docente vea la coherencia entre ambos entregables.
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDIOS DE COMUNICACIÓN Y ESTRATEGIAS -->
+    <section id="estrategias">
+      <div class="container">
+        <div class="section-tag">Medios digitales y estrategias</div>
+        <h2 class="section-title">Estrategia de comunicación digital</h2>
+        <p class="section-subtitle">
+          La estrategia combina redes sociales, contenido de valor, campañas pagadas y tráfico a la
+          página web. Se consideran como medios principales:
+          <strong>Facebook, Instagram y TikTok</strong>.
+        </p>
+
+        <div class="grid grid-2" style="margin-bottom: 2rem;">
+          <!-- Facebook -->
+          <div class="card">
+            <div class="card-badge">Red social 1</div>
+            <h3 class="card-title">Facebook · Comunidad & confianza</h3>
+            <p class="muted">
+              Facebook se utilizará para generar confianza, mostrar historias de emprendedores y
+              dirigir tráfico al sitio web.
+            </p>
+            <ul>
+              <li><strong>(a) Estrategia de promoción:</strong> publicaciones de carrusel mostrando
+                productos destacados por categoría, lives con emprendedores y anuncios segmentados por
+                intereses (emprendimiento, compras online, productos locales).</li>
+              <li><strong>(b) Invitación a la compra:</strong> copies con CTA claros como “Compra
+                ahora en Mercado Emprendedor GT” y botón con link directo al sitio web o WhatsApp.</li>
+              <li><strong>(c) Gratitud:</strong> posts de agradecimiento a clientes con captura de
+                testimonios reales y mención al emprendimiento involucrado.</li>
+              <li><strong>(d) Tráfico a la web:</strong> enlaces en todas las publicaciones con UTM,
+                botón “Más información” en anuncios y link fijo en la biografía.</li>
+            </ul>
+            <div class="social-row">
+              <span class="social-pill"><span class="icon">📘</span> /MercadoEmprendedorGT</span>
+            </div>
+          </div>
+
+          <!-- Instagram & TikTok -->
+          <div class="card">
+            <div class="card-badge">Red social 2</div>
+            <h3 class="card-title">Instagram & TikTok · Inspiración & alcance</h3>
+            <p class="muted">
+              Instagram y TikTok se enfocarán en contenido visual y dinámico para inspirar a comprar
+              y apoyar a emprendedores.
+            </p>
+            <ul>
+              <li><strong>(a) Estrategia de promoción:</strong> Reels/TikToks cortos mostrando el
+                antes y después de un emprendimiento, “un día en la vida del emprendedor” y
+                empaques atractivos.</li>
+              <li><strong>(b) Invitación a la compra:</strong> stickers de “Más info”, links en
+                historias (sticker de enlace) y CTA directos: “Desliza para ver el catálogo completo”.</li>
+              <li><strong>(c) Gratitud:</strong> historias destacadas de “Clientes felices” con
+                reseñas breves y etiquetando a los emprendedores.</li>
+              <li><strong>(d) Tráfico a la web:</strong> link en la bio, botones de acción y campañas
+                con objetivo “Visitas al sitio web”.</li>
+            </ul>
+            <div class="social-row">
+              <span class="social-pill"><span class="icon">📸</span> @mercadoemprendedor.gt</span>
+              <span class="social-pill"><span class="icon">🎵</span> @mercadoemprendedor_gt</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medidas, horarios y días -->
+        <div class="grid grid-3" style="margin-bottom: 2rem;">
+          <div class="card-soft">
+            <div class="card-badge">Medidas recomendadas</div>
+            <h3 class="card-title">Formatos de publicaciones</h3>
+            <ul class="muted">
+              <li>Instagram feed: 1080 x 1350 px (4:5).</li>
+              <li>Instagram Stories / Reels: 1080 x 1920 px (9:16).</li>
+              <li>Facebook imagen cuadrada: 1200 x 1200 px.</li>
+              <li>Facebook portada: 1640 x 720 px.</li>
+              <li>Miniaturas para video: 1280 x 720 px.</li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <div class="card-badge">Horarios & días</div>
+            <h3 class="card-title">Momentos óptimos</h3>
+            <ul class="muted">
+              <li>Horarios recomendados:
+                <ul>
+                  <li>12:00–14:00 (almuerzo / descanso).</li>
+                  <li>19:00–22:00 (después de trabajo/estudio).</li>
+                </ul>
+              </li>
+              <li>Días recomendados:
+                <ul>
+                  <li>Martes, miércoles y jueves para contenido educativo.</li>
+                  <li>Viernes y sábado para promociones y lanzamientos.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-soft">
+            <div class="card-badge">Temporalidad 12 meses</div>
+            <h3 class="card-title">Estacionalidad de ventas</h3>
+            <ul class="muted">
+              <li><strong>Meses fuertes:</strong> marzo–abril (verano), agosto (regreso a clases),
+                noviembre–diciembre (fin de año).</li>
+              <li><strong>Meses de baja rotación:</strong> enero, mayo y septiembre.</li>
+              <li><strong>Estrategia meses bajos:</strong> bundles con descuento, campañas de
+                “apoya un emprendimiento”, cupones por referidos y sorteos ligeros para mantener tráfico.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mockup-note">
+          <strong>Cómo usar esta sección:</strong> aquí se cubren todos los puntos de medios de
+          comunicación que pide el proyecto: redes, estrategias (a–d), medidas, horarios, días,
+          temporalidad anual y plan para meses de baja rotación.
+        </div>
+      </div>
+    </section>
+
+    <!-- EMAIL MARKETING -->
+    <section id="email-marketing">
+      <div class="container">
+        <div class="section-tag">Estrategia de email marketing</div>
+        <h2 class="section-title">Captación y nutrición de leads vía correo electrónico</h2>
+        <p class="section-subtitle">
+          El email marketing se utilizará para construir una <strong>base de datos propia</strong>,
+          reducir dependencia de algoritmos de redes sociales y mantener comunicación directa con
+          emprendedores y clientes finales.
+        </p>
+
+        <div class="grid grid-2">
+          <!-- Proveedor y beneficios -->
+          <div class="card">
+            <div class="card-badge">Proveedor elegido</div>
+            <h3 class="card-title">Mailchimp como herramienta principal</h3>
+            <p class="muted">
+              Para el proyecto se propone utilizar <strong>Mailchimp</strong> como proveedor de email
+              marketing, gracias a su plan gratuito, plantillas pre-diseñadas y fácil integración con
+              formularios de la web.
+            </p>
+            <ul class="muted">
+              <li>Creación de listas segmentadas (emprendedores, clientes finales, leads interesados).</li>
+              <li>Automatizaciones básicas: correo de bienvenida y secuencia post-compra.</li>
+              <li>Reportes de apertura, clics y bajas para optimizar campañas.</li>
+              <li>Editor drag & drop, ideal para lanzamientos visuales de productos.</li>
+            </ul>
+
+            <div class="mockup-note">
+              <strong>Nota para el docente:</strong> aunque aquí se menciona Mailchimp, técnicamente se
+              podría integrar cualquier proveedor similar (Sendinblue, MailerLite, etc.).
+            </div>
+          </div>
+
+          <!-- Formulario de suscripción -->
+          <div class="card">
+            <div class="card-badge">Formulario de suscripción</div>
+            <h3 class="card-title">Únete a la comunidad Mercado Emprendedor GT</h3>
+            <p class="muted">
+              Este formulario simula la integración con Mailchimp. En un entorno real, se conectaría
+              mediante un embed code o API.
+            </p>
+
+            <form>
+              <div>
+                <label for="nombre">Nombre completo</label>
+                <input id="nombre" type="text" placeholder="Ej. Ana López" />
+              </div>
+              <div>
+                <label for="email">Correo electrónico</label>
+                <input id="email" type="email" placeholder="tunombre@correo.com" />
+              </div>
+              <div>
+                <label for="tipo">Tipo de usuario</label>
+                <select id="tipo">
+                  <option>Quiero vender (soy emprendedor)</option>
+                  <option>Quiero comprar productos locales</option>
+                  <option>Solo deseo recibir novedades</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-primary">
+                Suscribirme al boletín
+              </button>
+            </form>
+
+            <p class="muted" style="margin-top: 0.5rem; font-size: 0.78rem;">
+              Al hacer clic en “Suscribirme”, aceptas recibir correos con novedades, lanzamientos y
+              promociones de Mercado Emprendedor GT. Puedes darte de baja en cualquier momento.
+            </p>
+          </div>
+        </div>
+
+        <!-- Modelo de email masivo -->
+        <div class="card" style="margin-top: 2rem;">
+          <div class="card-badge">Modelo de email masivo · Lanzamiento</div>
+          <h3 class="card-title">Ejemplo de correo de lanzamiento</h3>
+          <p class="muted">
+            A continuación se presenta el modelo de email que se enviaría a la base de datos
+            pre-registrada al momento de lanzar oficialmente la plataforma:
+          </p>
+
+          <div class="card-soft" style="margin-top: 0.8rem;">
+            <p><strong>Asunto:</strong> Descubre Mercado Emprendedor GT: el nuevo hogar digital de los emprendimientos guatemaltecos 🚀</p>
+            <p><strong>Preencabezado:</strong> Compra local, apoya talento nacional y encuentra productos únicos en un solo lugar.</p>
+            <p style="margin-top: 0.7rem;">
+              <strong>Contenido:</strong><br />
+              Hola <em>&lt;Nombre&gt;</em>,<br /><br />
+              Te damos la bienvenida a <strong>Mercado Emprendedor GT</strong>, la nueva plataforma
+              donde podrás encontrar productos y servicios de emprendedores guatemaltecos en un solo
+              lugar: artesanías, alimentos, productos de cuidado personal, servicios creativos y mucho más.<br /><br />
+              A partir de hoy podrás:
+            </p>
+            <ul>
+              <li>Explorar el catálogo completo de emprendimientos afiliados.</li>
+              <li>Comprar de forma segura y directa a cada emprendedor.</li>
+              <li>Apoyar el talento local y la economía guatemalteca.</li>
+            </ul>
+            <p>
+              Haz clic en el siguiente botón para descubrir el marketplace:
+            </p>
+            <p style="margin: 0.6rem 0;">
+              👉 <strong>[Ver Mercado Emprendedor GT]</strong>
+            </p>
+            <p>
+              Gracias por ser parte de esta comunidad que impulsa el emprendimiento nacional.<br />
+              <br />
+              Atentamente,<br />
+              <strong>Equipo Mercado Emprendedor GT</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOOGLE ADS -->
+    <section id="google-ads">
+      <div class="container">
+        <div class="section-tag">Estrategia Google Ads & YouTube</div>
+        <h2 class="section-title">Plan de anuncios en Google y YouTube</h2>
+        <p class="section-subtitle">
+          Para aumentar el alcance y la visibilidad, se propone una estrategia combinada de
+          <strong>búsqueda en Google</strong> y <strong>anuncios en YouTube</strong>, enfocada en
+          atraer emprendedores y clientes interesados en productos locales.
+        </p>
+
+        <div class="grid grid-2">
+          <!-- Keywords -->
+          <div class="card">
+            <div class="card-badge">Keywords</div>
+            <h3 class="card-title">Estrategia de palabras clave</h3>
+            <p class="muted">
+              Palabras clave sugeridas para campañas de búsqueda y display, con su justificación:
+            </p>
+
+            <div class="table-like" style="margin-top: 0.8rem;">
+              <div class="table-like-header">
+                <span>Keyword</span>
+                <span>Justificación</span>
+              </div>
+              <div class="table-like-row">
+                <span>“emprendimientos guatemaltecos”</span>
+                <span>Usuario busca conocer proyectos locales; encaja directo con la propuesta de valor.</span>
+              </div>
+              <div class="table-like-row">
+                <span>“comprar productos artesanales en línea”</span>
+                <span>Intención de compra clara y cercana al catálogo de Mercado Emprendedor GT.</span>
+              </div>
+              <div class="table-like-row">
+                <span>“vender productos en internet Guatemala”</span>
+                <span>Atrae a emprendedores que desean digitalizar su negocio.</span>
+              </div>
+              <div class="table-like-row">
+                <span>“marketplace guatemalteco”</span>
+                <span>Posiciona la plataforma como opción local frente a marketplaces globales.</span>
+              </div>
+              <div class="table-like-row">
+                <span>“apoyar emprendedores locales”</span>
+                <span>Apela al lado emocional del consumidor que quiere comprar con propósito.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tipos de anuncio -->
+          <div class="card">
+            <div class="card-badge">Tipos de anuncio</div>
+            <h3 class="card-title">Formatos recomendados</h3>
+            <p class="muted">
+              Se recomienda combinar <strong>TrueView In-Stream</strong> y
+              <strong>Discovery Ads</strong> en YouTube:
+            </p>
+            <ul class="muted">
+              <li><strong>TrueView In-Stream:</strong> anuncios que se muestran antes o durante un
+                video. Permiten contar en 15–30 segundos la historia de Mercado Emprendedor GT y
+                mostrar varios emprendimientos en un solo spot.</li>
+              <li><strong>Discovery Ads:</strong> anuncios que aparecen en los resultados de búsqueda
+                y la página principal de YouTube. Ideales para personas que buscan contenido sobre
+                emprendimiento y negocios.</li>
+            </ul>
+            <p class="muted">
+              Estrategia: segmentar por intereses (emprendimiento, negocios, compras online) y por
+              ubicación (Guatemala) para asegurar relevancia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Anuncio orgánico -->
+        <div class="card" style="margin-top: 2rem;">
+          <div class="card-badge">Ejemplo de anuncio orgánico en Google</div>
+          <h3 class="card-title">Snippet orgánico propuesto</h3>
+          <p class="muted">
+            Este es un ejemplo de cómo se vería un resultado orgánico optimizado:
+          </p>
+          <div class="card-soft" style="margin-top: 0.8rem;">
+            <p style="color: #22c55e; font-size: 0.8rem;">mercadoemprendedor-gt.com</p>
+            <p style="font-weight: 600;">Mercado Emprendedor GT · Marketplace de emprendimientos guatemaltecos</p>
+            <p class="muted" style="font-size: 0.85rem;">
+              Descubre productos y servicios creados por emprendedores guatemaltecos: artesanías,
+              alimentos, servicios digitales y más. Compra en línea y apoya el talento local a través
+              de nuestra plataforma segura.
+            </p>
+          </div>
+        </div>
+
+        <div class="mockup-note">
+          <strong>Espacio para evidencias visuales:</strong> En esta sección puedes añadir capturas de
+          ejemplos de anuncios (mockups diseñados en Canva o similares) si tu docente lo solicita.
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="container">
+        <div class="section-tag">Contacto & CTA final</div>
+        <h2 class="section-title">¿Listo para impulsar tu emprendimiento?</h2>
+        <p class="section-subtitle">
+          Si eres emprendedor y quieres formar parte de Mercado Emprendedor GT, completa el
+          siguiente formulario de contacto. Si eres cliente, también puedes escribirnos para
+          resolver dudas sobre compras y entregas.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 class="card-title">Formulario de contacto</h3>
+            <form>
+              <div>
+                <label for="nombre-contacto">Nombre completo</label>
+                <input id="nombre-contacto" type="text" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label for="email-contacto">Correo electrónico</label>
+                <input id="email-contacto" type="email" placeholder="tunombre@correo.com" />
+              </div>
+              <div>
+                <label for="tipo-contacto">Soy...</label>
+                <select id="tipo-contacto">
+                  <option>Emprendedor que quiere vender</option>
+                  <option>Cliente que quiere comprar</option>
+                  <option>Interesado en más información</option>
+                </select>
+              </div>
+              <div>
+                <label for="mensaje-contacto">Mensaje</label>
+                <textarea id="mensaje-contacto" placeholder="Cuéntanos brevemente tu necesidad."></textarea>
+              </div>
+              <button type="button" class="btn btn-primary">
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+
+          <div class="card-soft">
+            <h3 class="card-title">Información básica y redes</h3>
+            <p class="muted">
+              <strong>Correo:</strong> info@mercadoemprendedor-gt.com<br />
+              <strong>WhatsApp:</strong> +502 5555-5555<br />
+              <strong>Ubicación:</strong> Ciudad de Guatemala (operación 100% digital).
+            </p>
+
+            <p class="muted" style="margin-top: 0.8rem;">
+              También puedes escribirnos directamente a través de nuestras redes sociales:
+            </p>
+
+            <div class="social-row">
+              <span class="social-pill"><span class="icon">📘</span> /MercadoEmprendedorGT</span>
+              <span class="social-pill"><span class="icon">📸</span> @mercadoemprendedor.gt</span>
+              <span class="social-pill"><span class="icon">🎵</span> @mercadoemprendedor_gt</span>
+            </div>
+
+            <div class="mockup-note" style="margin-top: 1rem;">
+              <strong>Pie de página / información básica:</strong> estos datos pueden ajustarse a un
+              correo real si decides usar la página en producción. Para el proyecto es suficiente con
+              que la estructura esté clara.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-row">
+      <span>© 2025 Mercado Emprendedor GT. Todos los derechos reservados.</span>
+      <div class="footer-links">
+        <span>Proyecto académico · Implementación de Estrategias de Emprendimiento</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
